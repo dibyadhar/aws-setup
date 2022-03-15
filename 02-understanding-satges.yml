@@ -16,27 +16,36 @@ stages:
     steps:
     - bash: echo Build FirstJob
     - bash: echo $(PipelineVariable)
+    - bash: echo -------- Build Information -----------
+    - bash: echo $(Build.Repository.Name)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.SourceBranchNamed)
+    - bash: echo ----------- Source Directory Information ----------
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    
   - job: SecondJob
     steps:
     - script: echo Build SecondJob 
     
-- stage: DevDeploy
-  dependsOn: Build
-  variables :
-    environment: Dev
-  jobs:
-  - job: DevDeployJob
-    steps:
-    - script: echo Deploying to $(environment) Environment
+# - stage: DevDeploy
+#   dependsOn: Build
+#   variables :
+#     environment: Dev
+#   jobs:
+#   - job: DevDeployJob
+#     steps:
+#     - script: echo Deploying to $(environment) Environment
 
-- stage: QADeploy
-  dependsOn: Build
-  variables:
-    environment: QA
-  jobs:
-  - job: QADeployJob
-    steps:
-    - script: echo Deploying to $(environment) Environment
+# - stage: QADeploy
+#   dependsOn: Build
+#   variables:
+#     environment: QA
+#   jobs:
+#   - job: QADeployJob
+#     steps:
+#     - script: echo Deploying to $(environment) Environment
 
 - stage: ProdDeploy
   dependsOn: 
