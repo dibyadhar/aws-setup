@@ -23,12 +23,10 @@ stages:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  
-  - job: SecondJob
-    dependsOn: FirstJob
-    steps:
-    - script: echo Build SecondJob 
+    
     - bash: ls -R $(Build.ArtifactStagingDirectory)
+  
+
 
     
 # - stage: DevDeploy
