@@ -47,14 +47,14 @@ stages:
 #     steps:
 #     - script: echo Deploying to $(environment) Environment
 
-- stage: ProdDeploy
-  dependsOn: 
-  - DevDeploy
-  - QADeploy
-  variables:
-    environment: prod
-  jobs:
-  - job: ProdDeploy
-    steps: 
-    - bash: echo Deploying to $(environment) Environment
+# - stage: ProdDeploy
+#   dependsOn: 
+#   - DevDeploy
+#   - QADeploy
+#   variables:
+#     environment: prod
+#   jobs:
+#   - job: ProdDeploy
+#     steps: 
+#     - bash: echo Deploying to $(environment) Environment
 
