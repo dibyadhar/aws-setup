@@ -21,7 +21,7 @@ stages:
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**/*.yaml'
+        Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
   
   - job: SecondJob
