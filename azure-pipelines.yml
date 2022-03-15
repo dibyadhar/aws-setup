@@ -15,10 +15,16 @@ jobs:
 
 - job: job1
   steps:
-  - script: echo job1
-    displayName: 'Run a one-line script'
+  - script: echo job1 executing
+    displayName: 'JOB1'
 
 - job: job2
   steps:
-  - script: echo job2
-    displayName: 'Run a one-line script'
+  - script: echo job2 executing
+    displayName: 'JOB2'
+
+- job: job3
+  steps:
+  - script: echo job3 executing
+    displayName: 'JOB3'
+
