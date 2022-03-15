@@ -16,18 +16,19 @@ stages:
     steps:
     - bash: echo Build FirstJob
     - bash: echo $(PipelineVariable)
-    - bash: echo -------- Build Information -----------
-    - bash: echo $(Build.Repository.Name)
-    - bash: echo $(Build.BuildId)
-    - bash: echo $(Build.BuildNumber)
-    - bash: echo $(Build.SourceBranchNamed)
-    - bash: echo ----------- Source Directory Information ----------
     - bash: ls -R $(System.DefaultWorkingDirectory)
-    - bash: echo $(Build.ArtifactStagingDirectory)
-    
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: '**/*.yaml'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  
   - job: SecondJob
     steps:
     - script: echo Build SecondJob 
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+
     
 # - stage: DevDeploy
 #   dependsOn: Build
