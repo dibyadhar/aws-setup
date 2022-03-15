@@ -25,6 +25,7 @@ stages:
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
   
   - job: SecondJob
+    dependsOn: FirstJob
     steps:
     - script: echo Build SecondJob 
     - bash: ls -R $(Build.ArtifactStagingDirectory)
