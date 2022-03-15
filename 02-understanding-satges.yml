@@ -20,18 +20,23 @@ stages:
     - script: echo Build SecondJob 
     
 - stage: DevDeploy
+  dependsOn: Build
   jobs:
   - job: DevDeployJob
     steps:
     - script: echo Deploying to Dev Environment
 
 - stage: QADeploy
+  dependsOn: Build
   jobs:
   - job: QADeployJob
     steps:
     - script: echo Deploying to QA Environment
 
 - stage: ProdDeploy
+  dependsOn: 
+  - DevDeploy
+  - QADeploy
   jobs:
   - job: ProdDeploy
     steps: 
